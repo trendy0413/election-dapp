@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { isAdmin } from './actions/backend';
 import Loading from './components/Loading';
-export default function Auth(
-  ComposedClass,
-  isLogin,
-  setisLogin,
-  status,
-  contract
-) {
+export default function Auth(ComposedClass, isLogin, setisLogin, status) {
   function AuthenticationCheck(props) {
     useEffect(() => {
       if (isLogin === true && status === false) {
@@ -16,11 +11,7 @@ export default function Auth(
         props.history.push('/login');
       }
     }, [isLogin]);
-    if (!contract) {
-      console.log('Contract Initialized in Auth');
-    }
-
-    let obj = { isLogin, setisLogin, contract };
+    const obj = { isLogin, setisLogin };
     if (isLogin === 'Loading') {
       return <Loading />;
     } else {

@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { startVoting, declareResult } from '../actions/smartContract';
 import AdminForms from '../components/AdminForms';
 import { SpeakerphoneIcon, XIcon } from '@heroicons/react/outline';
-const AdminDashboard = props => {
-  if (!props.contract) {
-    console.log('Contract Initialized in Admin Dashboard');
-  }
+const AdminDashboard = () => {
   const [message, setMessage] = useState(false);
 
   const startVoteHandler = async e => {
@@ -82,11 +79,7 @@ const AdminDashboard = props => {
           </button>
         </div>
       </div>
-      <AdminForms
-        contract={props.contract}
-        message={message}
-        setMessage={setMessage}
-      />
+      <AdminForms />
     </>
   );
 };
