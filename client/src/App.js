@@ -19,6 +19,7 @@ const App = () => {
   // ===================== setInfile ====================
   useEffect(() => {
     setInFile(web3, accounts, contract);
+    console.log('contract => ' + contract);
   }, [web3, accounts, contract]);
 
   const init = useCallback(async () => {
@@ -57,9 +58,6 @@ const App = () => {
   useEffect(() => {
     init();
   }, []);
-  if (!contract) {
-    console.log('Contract Initialized');
-  }
 
   const check = useCallback(async () => {
     try {
@@ -87,7 +85,7 @@ const App = () => {
         <Route
           exact
           path='/admin'
-          component={Auth(AdminDashboard, isLogin, setisLogin, true, contract)}
+          component={Auth(AdminDashboard, isLogin, setisLogin, true)}
         />
         <Route
           exact
@@ -95,7 +93,7 @@ const App = () => {
           component={Auth(SignIn, isLogin, setisLogin, false)}
         />
         <Route exact path='/voter'>
-          <VoterCafe />
+          <VoterCafe contract={contract} />
         </Route>
         <Route exact path='/'>
           <LandingPage />

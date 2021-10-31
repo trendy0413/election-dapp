@@ -48,74 +48,25 @@ const declareResult = async () => {
     if (phase == 3) return 'Success';
     else return 'Some Error Occured :(';
   } catch (err) {
-    console.log(err);
     return 'Some Error Occured :(';
   }
 };
 
-const fetchPoliticalParties = async _contract => {
+const getPhase = async _contract => {
+  console.log('inside getPhase => ');
   try {
-    console.log('_contract', _contract);
-    let partiesLen = await _contract.methods.getParties().call();
-    console.log('partiesLen', partiesLen);
-    let parties = [{ name: 'Individual', val: -1 }];
-    for (let i = 0; i < parseInt(partiesLen); i++) {
-      let res = await _contract.methods.parties(i).call();
-      parties.push({ ...res, val: i });
+    if (!_contract) {
+      console.log('contract is not set');
+      return;
     }
-    console.log('parties', parties);
-    return parties;
+    console.log('_contract => ' + _contract);
+    console.log('contract is set');
+    const phase = await _contract.methods.phase().call();
+    console.log(phase);
+    return phase;
   } catch (err) {
     console.log(err);
-    return [];
   }
 };
 
-const createParty = async (_name, _logoLink) => {
-  console.log('In Crete Party', _name, _logoLink);
-  try {
-    let phase = await contract.methods.phase().call();
-    if (phase != 1) return 'Invalid Phase';
-    console.log('-------------------- going to call');
-    const res = await contract.methods
-      .createPoliticalParty(_name, _logoLink)
-      .send({ from: accounts[0] });
-    console.log('Political Party Created', res);
-
-    return 'Success';
-    // else return 'Some Error Occured :(';
-  } catch (err) {
-    console.log('----------------see here', err);
-    return 'Some Error Occured :(';
-  }
-};
-
-const createCandidate = async (_name, _logoLink, _pinCode, _partyId) => {
-  console.log('In Crete Candidate', _name, _logoLink, _partyId, _pinCode);
-  if (!_logoLink) {
-    _logoLink = 'it wont be stored anyways';
-  }
-  try {
-    let phase = await contract.methods.phase().call();
-    if (phase != 1) return 'Invalid Phase';
-    console.log('-------------------- going to call');
-    const res = await contract.methods
-      .addCandidate(_name, _logoLink, _partyId, _pinCode)
-      .send({ from: accounts[0] });
-    console.log('Candidate Created', res);
-
-    return 'Success';
-    // else return 'Some Error Occured :(';
-  } catch (err) {
-    console.log('----------------see here', err);
-    return 'Some Error Occured :(';
-  }
-};
-export {
-  setInFile,
-  startVoting,
-  declareResult,
-  fetchPoliticalParties,
-  createParty,
-  createCandidate,
-};
+export { setInFile, getPhase, startVoting, declareResult };

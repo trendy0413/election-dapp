@@ -45,10 +45,6 @@ contract Election is Ownable{
         _;
     }
 
-    function getParties() public view returns (uint) {
-        return parties.length;
-    }
-
     function getCandidateCount(uint32 district) public view returns (uint) {
         return districtToCandidates[district].length;
     }
