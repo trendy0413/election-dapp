@@ -24,7 +24,7 @@ contract Election is Ownable{
     }
     
     uint8 public phase = 1; // 1 for registration, 2 for voting, 3 for result declared
-    mapping (address => Voter) voters;
+    mapping (address => Voter) public voters;
     mapping (uint32 => Candidate[]) public districtToCandidates;
     PoliticalParty[] public parties;
     uint32[] pinCodes;
@@ -43,6 +43,10 @@ contract Election is Ownable{
     modifier afterEndTime() {
         require(phase == 2 && block.timestamp > votingPeriod, "Invalid Phase");
         _;
+    }
+
+    function getParties() public view returns (uint) {
+        return parties.length;
     }
 
     function getCandidateCount(uint32 district) public view returns (uint) {
