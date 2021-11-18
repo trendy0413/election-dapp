@@ -13409,136 +13409,14 @@
   },
   "networks": {
     "5777": {
-      "events": {
-        "0x67cc0f353f5f34a1c4a33aaa051130d0ec8a071c57e4cd5e55cfe7f1e7c05a43": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "_name",
-              "type": "string"
-            },
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "_logoLink",
-              "type": "string"
-            },
-            {
-              "indexed": false,
-              "internalType": "int16",
-              "name": "_partyId",
-              "type": "int16"
-            },
-            {
-              "indexed": false,
-              "internalType": "uint32",
-              "name": "_pinCode",
-              "type": "uint32"
-            }
-          ],
-          "name": "CandidateCreated",
-          "type": "event"
-        },
-        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "internalType": "address",
-              "name": "previousOwner",
-              "type": "address"
-            },
-            {
-              "indexed": true,
-              "internalType": "address",
-              "name": "newOwner",
-              "type": "address"
-            }
-          ],
-          "name": "OwnershipTransferred",
-          "type": "event"
-        },
-        "0x9f4aaeb6bdce85d10c4ff95b54005e03164d9e84acc990fc01a44381cb9d9294": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "_name",
-              "type": "string"
-            },
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "_logoLink",
-              "type": "string"
-            }
-          ],
-          "name": "PoliticalPartyCreated",
-          "type": "event"
-        },
-        "0xf5b08346e1e6b0b55d07ce94e81fcb198d47fbbecfea3b9a476f454c86761ec4": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "internalType": "address",
-              "name": "_id",
-              "type": "address"
-            }
-          ],
-          "name": "Vote",
-          "type": "event"
-        },
-        "0xa636f4a11e2d3ba7f89d042ecb0a6b886716e98cd49d8fd876ee0f73bced42b8": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "internalType": "address",
-              "name": "_id",
-              "type": "address"
-            }
-          ],
-          "name": "VoterAdded",
-          "type": "event"
-        },
-        "0xe7bd3f30f664c931bdf34728d01db1970122a3c7c0ed1aacb93584f690b116f3": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "_name",
-              "type": "string"
-            }
-          ],
-          "name": "CandidateCreated",
-          "type": "event"
-        },
-        "0x81886254f7245ab46bb36841c3b94f17fb233eb99f6bc12e435ae0b6bce44506": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "internalType": "string",
-              "name": "_name",
-              "type": "string"
-            }
-          ],
-          "name": "PoliticalPartyCreated",
-          "type": "event"
-        }
-      },
+      "events": {},
       "links": {},
-      "address": "0xa8bfE976BcBE76602733D2Ba03e228610109F44b",
-      "transactionHash": "0x16c84622033244e3ed342b8710f4a65660ba004dbbe1b5ef48e5d546e9db56e4"
+      "address": "0x18d957F494d5C7bcFDA592AAA459E21D05C1bafa",
+      "transactionHash": "0x3727ee737e29ee0766d582426670d6b6ed7458c801a6ede71f78659625cbf335"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-18T14:32:41.605Z",
+  "updatedAt": "2021-11-18T16:01:09.990Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {
