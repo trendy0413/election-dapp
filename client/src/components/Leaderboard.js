@@ -1,22 +1,50 @@
+/* This example requires Tailwind CSS v2.0+ */
+import { ChevronDownIcon } from '@heroicons/react/solid';
 import Pagination from './Pagination';
-import { useState, useEffect, useCallback } from 'react';
-import { fetchPoliticalParties } from '../actions/smartContract';
+import { useState, useEffect } from 'react';
+import { Fragment } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import {
+  getCandidates,
+  fetchPoliticalParties2,
+} from '../actions/smartContract';
 
-export default function Leaderboard(props) {
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
+
+export default function Leaderboard() {
+  const [data, setData] = useState([
+    {
+      name: 'Jane Cooper',
+      title: 'Regional Paradigm Technician',
+      department: 'Optimization',
+      role: 'Admin',
+      email: 'jane.cooper@example.com',
+      image:
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+    },
+  ]);
   const [error, setError] = useState('');
+  const [isPartyData, setIsPartyData] = useState('true');
   const [step, setStep] = useState(0); // 0 for candidate, 1 for party
   const [search, setSearch] = useState();
   const [parties, setParties] = useState([]);
 
-  const fetchHandler = useCallback(async () => {
-    const res = await fetchPoliticalParties(props.contract);
-    console.log('dekh le bhai --------------', res);
-    setParties(res);
-  }, [props.contract]);
-
   useEffect(() => {
-    fetchHandler();
-  }, [fetchHandler]);
+    setTimeout(async () => {
+      const res = await fetchPoliticalParties2();
+      console.log('dekh le bhai --------------', res);
+      setParties(res);
+    }, 4000);
+  }, []);
+
+  const getInitialState = () => {
+    return { selectValue: 'Radish' };
+  };
+  const handleChange = e => {
+    setIsPartyData(e.target.value);
+  };
 
   return (
     <div class='p-2 md:p-8'>
@@ -62,7 +90,7 @@ export default function Leaderboard(props) {
           />
         </div>
 
-        {parties.length > 0 ? (
+        {data.length > 0 ? (
           <>
             <Pagination
               data={parties}
