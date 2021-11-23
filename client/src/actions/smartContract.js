@@ -163,15 +163,22 @@ const getCandidates = async _id => {
   try {
     console.log('contract', contract);
     let voter = await contract.methods.voters(_id).call();
-    if (voter.pinCode === '0') return 'Oops! You are not registered';
-    if (voter.canVote === false) return 'You have already voted :)';
+    if (voter.canVote == false) return 'You have already voted or unregistered';
     console.log("voter's district", voter.pinCode);
-    let candidates = await fetchCandidatesResult(voter.pinCode);
+    let len = await contract.methods.getCandidateCount(voter.pinCode).call();
+    console.log('candidates Len', len);
+    let candidates = [];
+    for (let i = 0; i < parseInt(len); i++) {
+      let res = await contract.methods
+        .districtToCandidates(voter.pinCode, i)
+        .call();
+      candidates.push({ ...res, val: i });
+    }
     console.log('candidates', candidates);
     return candidates;
   } catch (err) {
     console.log(err);
-    return 'Some Error Occured';
+    return 'You are not authorized to vote';
   }
 };
 
@@ -181,7 +188,7 @@ const vote = async _candidateId => {
       .vote(_candidateId)
       .send({ from: accounts[0] });
     console.log(res);
-    return 'Wohoo! Your Vote has been recorded';
+    return 'Success';
   } catch (err) {
     console.log(err);
     return 'Voting has stopped :( or Some other error';
