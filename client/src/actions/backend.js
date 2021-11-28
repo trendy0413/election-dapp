@@ -87,17 +87,4 @@ const verifyOTP = async (phone, code, voterID, VoterEthID, district) => {
   }
 };
 
-const fetchStats = async () => {
-  try {
-    const res = await axios.get(
-      `${process.env.REACT_APP_API_URL}/api/fetchStats`
-    );
-    console.log(res);
-    return res.data;
-  } catch (err) {
-    console.log(err);
-    return { msg: 'Some Error Occured' };
-  }
-};
-
-export { isAdmin, login, logout, sendOTP, verifyOTP, fetchStats };
+export { isAdmin, login, logout, sendOTP, verifyOTP };
